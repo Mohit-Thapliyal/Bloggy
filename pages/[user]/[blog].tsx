@@ -46,8 +46,9 @@ const Blog = () => {
   const loadBlog = useCallback(async () => {
     setloading(true);
     if(blogId){
-      const res = await fetch(`${url}/${blogId}`);
+      const res = await fetch(`${url}/blog/${blogId}`);
       const blog = await res.json();
+      console.log("ended")
       setloading(false);
       setBlog(blog);
     }
