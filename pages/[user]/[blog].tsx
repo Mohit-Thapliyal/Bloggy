@@ -1,5 +1,6 @@
 import dateConverter from "@/utils/dateConverter";
 import { BlogType } from "@/utils/types";
+import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 // import { useRouter } from "next/router";
@@ -48,7 +49,6 @@ const Blog = () => {
     if(blogId){
       const res = await fetch(`${url}/blog/${blogId}`);
       const blog = await res.json();
-      console.log("ended")
       setloading(false);
       setBlog(blog);
     }
@@ -59,6 +59,10 @@ const Blog = () => {
   }, [loadBlog]);
 
   return (
+    <>
+    <Head>
+      <title>{`${blog?.title?.slice(0,25).trim()}...`}</title>
+    </Head>
     <div className="w-full relative flex flex-col min-h-screen py-20 gap-5 px-1">
       <div className="flex flex-col gap-5 bg-white p-5 rounded-xl shadow-md">
         {!loading && blog && (
@@ -138,6 +142,7 @@ const Blog = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

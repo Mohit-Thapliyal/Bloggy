@@ -9,15 +9,15 @@ const Navbar = () => {
   const router = useRouter();
   const user = router.query.user;
   return (
-    <nav className="fixed w-screen py-2 z-20 backdrop-blur-sm bg-slate-200">
-      <div className="flex lg:w-5/6 xl:w-4/6 justify-between rounded-xl items-center px-5 py-2 bg-white shadow-md mx-auto">
+    <nav className="fixed w-screen lg:py-2 z-20 backdrop-blur-sm bg-slate-200">
+      <div className="flex lg:w-5/6 xl:w-4/6 justify-between lg:rounded-xl items-center px-5 py-2 bg-white shadow-md mx-auto">
         <Link
           href={`/${user}/`}
           className="font-semibold text-orange-400 text-lg cursor-pointer"
         >
           Bloggy
         </Link>
-        <div className="flex gap-5 text-sm items-center">
+        <div className="hidden lg:flex gap-5 text-sm items-center">
           <Link
             href={`/${user}/my-blog`}
             className={`hover:border-b pb-1 font-medium border-orange-400 ${
@@ -55,7 +55,9 @@ const Navbar = () => {
               ? confirm("Do you want to log out?")
                 ? signOut()
                 : null
-              : null;
+              : confirm("Login First?")
+                ? router.replace("/auth/signin")
+                : null
           }}
           className="w-9 h-9 relative border cursor-pointer rounded-full shadow-lg"
         >

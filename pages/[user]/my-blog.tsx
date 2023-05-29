@@ -4,6 +4,7 @@ import Blog from "@/components/Blog";
 import { useSession } from "next-auth/react";
 import Login from "@/components/LoginPrompt";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Head from "next/head";
 
 const MyBlog = () => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);
@@ -19,7 +20,7 @@ const MyBlog = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: data?.user?.email!.split(' ')[0] }),
+      body: JSON.stringify({ id: data?.user?.email!.split(" ")[0] }),
     });
     const res2 = await res.json();
     setloading(false);
@@ -28,38 +29,41 @@ const MyBlog = () => {
   }, [url, data?.user?.email]);
 
   useEffect(() => {
-    if(status==="authenticated")
-    loadBlog();
+    if (status === "authenticated") loadBlog();
   }, [loadBlog, status]);
 
   if (status !== "authenticated") return <Login />;
 
   return (
-    <div className="w-full relative flex flex-col min-h-screen pb-16 pt-24 gap-5">
-      {status === "authenticated" &&
-        !loading &&
-        blogs?.map((item, index) => (
-          <Blog
-            _id={item._id}
-            key={`blog${index}`}
-            index={index}
-            title={item.title!}
-            date={item.date!}
-            description={item.blog!}
-            likes={item.likes!}
-            hashtag={item.tags!}
-            profile={item.profileImage!}
-            likeCount={item.likeCount!}
-            image={item.image!}
-          />
-        ))}
+    <>
+      <Head>
+        <title>My Blog</title>
+      </Head>
+      <div className="w-full relative flex flex-col min-h-screen pb-16 pt-24 gap-5">
         {status === "authenticated" &&
-        loading && (
+          !loading &&
+          blogs?.map((item, index) => (
+            <Blog
+              _id={item._id}
+              key={`blog${index}`}
+              index={index}
+              title={item.title!}
+              date={item.date!}
+              description={item.blog!}
+              likes={item.likes!}
+              hashtag={item.tags!}
+              profile={item.profileImage!}
+              likeCount={item.likeCount!}
+              image={item.image!}
+            />
+          ))}
+        {status === "authenticated" && loading && (
           <h3 className="flex gap-2 mx-auto items-center">
             <AiOutlineLoading3Quarters className="text-2xl text-slate-500 animate-spin duration-200" />
           </h3>
         )}
-    </div>
+      </div>
+    </>
   );
 };
 

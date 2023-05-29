@@ -14,12 +14,11 @@ const authOptions: NextAuthOptions = {
         const { userID, password } = credentials as LoginCredentialsType;
         const res = await fetch(`${process.env.API_URL}/user/${userID}`);
         const user = await res.json();
-        console.log(user);
         if (user.length === 0) {
           throw new Error("No user found with this user id, please signin");
         }
         if (password !== user.password) {
-          throw new Error(`User Id or password doesn't match ${password} ${user.password}`);
+          throw new Error(`Password doesn't match ${password} ${user.password}`);
         }
         return {
           id: user.userID,

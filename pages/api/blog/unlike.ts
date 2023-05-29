@@ -10,15 +10,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //function for catch errors
   const catcher = (error: Error) => res.status(400).json({ error });
 
-  //   const id: string = req.query.id as string;
-  const userID = req.body.id;
-
-  // Potential Responses for /todos/:id
+  // Potential Responses
   const handleCase: ResponseFuncs = {
     // RESPONSE FOR GET REQUESTS
+    GET: async (req: NextApiRequest, res: NextApiResponse) => {
+      await connect(); // connect to database
+      res.json(await Blog.find().catch(catcher));
+    },
+    // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       await connect(); // connect to database
-      res.json(await Blog.find({ userID: userID }).catch(catcher));
+      res.json(
+        await Blog.updateOne(
+        //   { _id: req.body.blogID, },
+          { _id: req.body.blogID, likes: {$in: [req.body.userID]} },
+          { $pull: { likes: req.body.userID }, $inc: { likeCount: -1 } }
+        ).catch(catcher)
+      );
     },
   };
 
