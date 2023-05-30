@@ -42,7 +42,7 @@ const Home = ({blogs}: HomeProps) => {
       ))}
     </div>
     </>
-  ); 
+  );
 };
 
 // GET PROPS FOR SERVER SIDE RENDERING
