@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <nav className="fixed w-screen lg:py-2 z-20 backdrop-blur-sm bg-slate-200">
       <div className="flex flex-row-reverse lg:flex-row lg:w-5/6 xl:w-4/6 justify-between lg:rounded-xl items-center px-4 lg:px-5 py-2 bg-white shadow-md mx-auto">
-        <span className="text-3xl" onClick={() => setToggle(!toggle)}>
+        <span className="text-3xl lg:hidden" onClick={() => setToggle(!toggle)}>
           <HiOutlineMenu />
         </span>
         <Link
