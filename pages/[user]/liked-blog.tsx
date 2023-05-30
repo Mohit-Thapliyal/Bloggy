@@ -1,11 +1,11 @@
-import Login from "@/components/LoginPrompt";
+import LoginPrompt from "@/components/LoginPrompt";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import React from "react";
 
 const LikedBlog = () => {
   const { status } = useSession();
-  if (status !== "authenticated") return <Login />;
+  if (status !== "authenticated") return <LoginPrompt />;
   return (
     <>
       <Head>

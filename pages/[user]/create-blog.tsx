@@ -1,4 +1,4 @@
-import Login from "@/components/LoginPrompt";
+import LoginPrompt from "@/components/LoginPrompt";
 import { BlogType } from "@/utils/types";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
@@ -118,7 +118,7 @@ const CreateBlog = () => {
     return res2.url;
   };
 
-  if (status !== "authenticated") return <Login />;
+  if (status !== "authenticated") return <LoginPrompt />;
 
   return (
     <>
@@ -273,15 +273,5 @@ const CreateBlog = () => {
     </>
   );
 };
-
-// export async function getServerSideProps() {
-//   // get todo data from API
-//   const url = process.env.API_URL;
-
-//   // return props
-//   return {
-//     props: { url },
-//   };
-// }
 
 export default CreateBlog;
