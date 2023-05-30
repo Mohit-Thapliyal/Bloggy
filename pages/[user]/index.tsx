@@ -19,7 +19,12 @@ const Home = () => {
 
   useEffect(()=>{
     const fetchData = async()=>{
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog`)
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog`,{
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin':'*'
+        }
+      })
       const blogs = await res.json();
       setBlogdata(blogs);
     }
