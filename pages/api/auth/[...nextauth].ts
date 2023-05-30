@@ -18,13 +18,15 @@ const authOptions: NextAuthOptions = {
           throw new Error("No user found with this user id, please signin");
         }
         if (password !== user.password) {
-          throw new Error(`Password doesn't match ${password} ${user.password}`);
+          throw new Error(
+            `Password doesn't match ${password} ${user.password}`
+          );
         }
         return {
           id: user.userID,
           name: user.userName,
           email: `${user.userID} ${user._id}`,
-          image: user.profileImage
+          image: user.profileImage,
         };
         // {
         //   id: user._id,
@@ -41,6 +43,7 @@ const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  secret: process.env.NEXT_PUBLIC_SECRET,
   pages: {
     signIn: "/auth/signin",
   },
