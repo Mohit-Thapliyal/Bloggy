@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Blog from "@/components/Blog";
 import { BlogType } from "@/utils/types";
 import { useSession } from "next-auth/react";
@@ -9,10 +9,22 @@ interface HomeProps {
   blogs: BlogType[]
 }
 
-const Home = ({blogs}: HomeProps) => {
+const Home = () => {
+// const Home = ({blogs}: HomeProps) => {
 
   const {status, data} = useSession();
   const router = useRouter();
+
+  const [blogdata, setBlogdata] = useState<BlogType[]>([]);
+
+  useEffect(()=>{
+    const fetchData = async()=>{
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog`)
+      const blogs = await res.json();
+      setBlogdata(blogs);
+    }
+    fetchData();
+  },[])
 
   useEffect(() => {
     if(status === "authenticated") router.replace(`/${data.user?.email}`)
@@ -25,7 +37,7 @@ const Home = ({blogs}: HomeProps) => {
       <title>Bloggy</title>
     </Head>
     <div className="w-full relative flex flex-col min-h-screen px-3 lg:px-0 pt-20 pb-16 lg:pt-24 gap-5">
-      {blogs.map((item, index) => (
+      {blogdata.map((item, index) => (
         <Blog
           _id={item._id}
           key={`blog${index}`}
@@ -45,16 +57,16 @@ const Home = ({blogs}: HomeProps) => {
   );
 };
 
-// GET PROPS FOR SERVER SIDE RENDERING
-export async function getServerSideProps() {
-  // get todo data from API
-  const res = await fetch(`${process.env.API_URL}/blog`)
-  const blogs = await res.json()
+// // GET PROPS FOR SERVER SIDE RENDERING
+// export async function getServerSideProps() {
+//   // get todo data from API
+//   const res = await fetch(`${process.env.API_URL}/blog`)
+//   const blogs = await res.json()
 
-  // return props
-  return {
-    props: { blogs },
-  }
-}
+//   // return props
+//   return {
+//     props: { blogs },
+//   }
+// }
 
 export default Home;
