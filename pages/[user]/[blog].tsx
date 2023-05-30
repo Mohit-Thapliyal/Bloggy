@@ -64,7 +64,7 @@ const Blog = () => {
       <title>{`${blog?.title?.slice(0,25).trim()}...`}</title>
     </Head>
     <div className="w-full relative flex flex-col min-h-screen py-20 gap-5 px-1">
-      <div className="flex flex-col gap-5 bg-white p-5 rounded-xl shadow-md">
+      <div className="flex flex-col gap-5 bg-white p-3 lg:p-5 rounded-xl shadow-md">
         {!loading && blog && (
           <>
             <div className="w-full relative group">
@@ -116,7 +116,7 @@ const Blog = () => {
                     </p>
                   ))}
               </div>
-              <div className="flex gap-3 text-sm text-gray-800 mt-4">
+              <div className="flex flex-wrap gap-3 text-sm text-gray-800 mt-4">
                 {blog.tags &&
                   blog.tags.map((item, index) => (
                     <span

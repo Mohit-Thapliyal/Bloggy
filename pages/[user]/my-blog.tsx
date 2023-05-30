@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import { BlogType } from "@/utils/types";
 import Blog from "@/components/Blog";
 import { useSession } from "next-auth/react";
-import Login from "@/components/LoginPrompt";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Head from "next/head";
+import LoginPrompt from "@/components/LoginPrompt";
 
 const MyBlog = () => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);
@@ -32,7 +32,7 @@ const MyBlog = () => {
     if (status === "authenticated") loadBlog();
   }, [loadBlog, status]);
 
-  if (status !== "authenticated") return <Login />;
+  if (status !== "authenticated") return <LoginPrompt />;
 
   return (
     <>

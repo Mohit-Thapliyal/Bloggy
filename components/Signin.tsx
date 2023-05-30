@@ -92,7 +92,7 @@ const Signin = ({
             >
               Login
             </button>
-            <p className="text-slate-500 text-xs w-fit mx-auto mt-1">
+            <p className="text-slate-500 text-xs w-fit mx-auto mt-3 lg:mt-1">
               Don&apos;t have an accout?{" "}
               <span
                 onClick={() => setLogin(false)}

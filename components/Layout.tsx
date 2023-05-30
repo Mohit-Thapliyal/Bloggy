@@ -9,7 +9,7 @@ const Layout: React.FC<ScriptProps> = ({ children }) => {
 
   return (
     <div
-      className={`w-screen lg:px-0 flex lg:justify-center ${
+      className={`w-screen lg:px-0 lg:flex lg:justify-center ${
         router.pathname !== "/_error" ? "bg-slate-200" : "bg-black"
       }`}
     >
