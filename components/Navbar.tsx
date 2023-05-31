@@ -88,114 +88,50 @@ const Navbar = () => {
       </div>
 
       {toggle && (
-        <div className="bg-white lg:hidden h-screen w-screen flex justify-center items-center absolute top-0">
+        <div className="bg-white lg:hidden h-screen w-screen px-20 flex justify-center items-center absolute top-0">
           <span className="absolute top-3 right-4">
             <HiX className="text-3xl" onClick={() => setToggle(false)} />
           </span>
-          <ul className="h-full flex flex-col w-full justify-evenly items-center">
-            <li
-              className={`flex justify-center gap-3 items-center w-full text-lg font-medium rounded-md px-10`}
+          <ul className="h-full flex flex-col w-full gap-10 mt-40 items-center">
+          <li
+              className={`flex justify-center gap-3 items-center py-2 w-full text-lg rounded-md shadow-md ${
+                router.pathname === "/[user]"
+                  ? "text-white bg-orange-400 font-medium"
+                  : "text-slate-600 bg-slate-200"
+              }`}
               onClick={() => toggleHandler(`/${user}/`)}
             >
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]" ? "bg-orange-500" : ""
-                }`}
-              />
-              <span
-                className={`${
-                  router.pathname === "/[user]"
-                    ? "text-orange-400"
-                    : "text-slate-700"
-                }`}
-              >
                 Home
-              </span>
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]" ? "bg-orange-500" : ""
-                }`}
-              />
             </li>
             <li
-              className={`flex justify-center gap-3 items-center w-full text-lg font-medium rounded-md px-10`}
+              className={`flex justify-center gap-3 items-center py-2 w-full text-lg rounded-md shadow-md ${
+                router.pathname === "/[user]/my-blog"
+                  ? "text-white bg-orange-400 font-medium"
+                  : "text-slate-600 bg-slate-200"
+              }`}
               onClick={() => toggleHandler(`/${user}/my-blog`)}
             >
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]/my-blog" ? "bg-orange-500" : ""
-                }`}
-              />
-              <span
-                className={`${
-                  router.pathname === "/[user]/my-blog"
-                    ? "text-orange-400"
-                    : "text-slate-700"
-                }`}
-              >
                 My blog
-              </span>
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]/my-blog" ? "bg-orange-500" : ""
-                }`}
-              />
             </li>
             <li
-              className={`flex justify-center gap-3 items-center w-full text-lg font-medium rounded-md px-10`}
+              className={`flex justify-center gap-3 items-center py-2 w-full text-lg rounded-md shadow-md ${
+                router.pathname === "/[user]/liked-blog"
+                  ? "text-white bg-orange-400 font-medium"
+                  : "text-slate-600 bg-slate-200"
+              }`}
               onClick={() => toggleHandler(`/${user}/liked-blog`)}
             >
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]/liked-blog"
-                    ? "bg-orange-500"
-                    : ""
-                }`}
-              />
-              <span
-                className={`${
-                  router.pathname === "/[user]/liked-blog"
-                    ? "text-orange-400"
-                    : "text-slate-700"
-                }`}
-              >
                 Liked blog
-              </span>
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]/liked-blog"
-                    ? "bg-orange-500"
-                    : ""
-                }`}
-              />
             </li>
             <li
-              className={`flex justify-center gap-3 items-center w-full text-lg font-medium rounded-md px-10`}
+              className={`flex justify-center gap-3 items-center py-2 w-full text-lg rounded-md shadow-md ${
+                router.pathname === "/[user]/create-blog"
+                  ? "text-white bg-orange-400 font-medium"
+                  : "text-slate-600 bg-slate-200"
+              }`}
               onClick={() => toggleHandler(`/${user}/create-blog`)}
             >
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]/create-blog"
-                    ? "bg-orange-500"
-                    : ""
-                }`}
-              />
-              <span
-                className={`${
-                  router.pathname === "/[user]/create-blog"
-                    ? "text-orange-400"
-                    : "text-slate-700"
-                }`}
-              >
                 Create blog
-              </span>
-              <div
-                className={`h-px flex-grow w-8 bg-black ${
-                  router.pathname === "/[user]/create-blog"
-                    ? "bg-orange-500"
-                    : ""
-                }`}
-              />
             </li>
           </ul>
         </div>
