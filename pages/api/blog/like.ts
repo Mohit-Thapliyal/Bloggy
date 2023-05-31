@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { ResponseFuncs } from "../../../utils/types";
 import { connect } from "@/utils/connectDB";
 import Blog from "@/models/blog";
+import User from "@/models/user";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   //capture request method, we type it as a key of ResponseFunc to reduce typing later
@@ -20,12 +21,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
       await connect(); // connect to database
-      res.json(
-        await Blog.updateOne(
-          { _id: req.body.blogID, likes: {$nin: [req.body.userID]} },
+      res.json({
+        resA: await Blog.updateOne(
+          { _id: req.body.blogID, likes: { $nin: [req.body.userID] } },
           { $push: { likes: req.body.userID }, $inc: { likeCount: 1 } }
-        ).catch(catcher)
-      );
+        ).catch(catcher),
+        resB: await User.updateOne(
+          { userID: req.body.userID, likes: { $nin: [req.body.blogID] } },
+          { $push: { likes: req.body.blogID } }
+        ).catch(catcher),
+      });
     },
   };
 

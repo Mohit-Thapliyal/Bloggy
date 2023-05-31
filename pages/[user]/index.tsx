@@ -24,7 +24,7 @@ const Home = ({blogs}: HomeProps) => {
     <Head>
       <title>Bloggy</title>
     </Head>
-    <div className="w-full relative flex flex-col min-h-screen px-3 lg:px-0 pt-20 pb-16 lg:pt-24 gap-5">
+    <div className="w-full relative flex flex-col min-h-screen px-2 lg:px-0 pt-20 pb-16 lg:pt-24 gap-5">
       {blogs.map((item, index) => (
         <Blog
           _id={item._id}

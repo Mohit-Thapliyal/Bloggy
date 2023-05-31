@@ -94,7 +94,7 @@ const Blog = ({
 
   return (
     <div
-      className={`w-full flex flex-col lg:flex-row items-center relative lg:h-56 p-2 lg:p-5 bg-white rounded-xl lg:rounded-3xl shadow-md gap-5 ${
+      className={`w-full flex flex-col lg:flex-row items-center relative lg:h-56 p-3 lg:p-5 bg-white rounded-xl lg:rounded-3xl shadow-md gap-5 ${
         index % 2 ? "flex-row-reverse" : ""
       }`}
     >

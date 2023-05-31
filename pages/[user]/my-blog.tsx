@@ -39,7 +39,7 @@ const MyBlog = () => {
       <Head>
         <title>My Blog</title>
       </Head>
-      <div className="w-full relative flex flex-col min-h-screen pb-16 pt-24 gap-5">
+      <div className="w-full relative flex flex-col min-h-screen px-2 lg:px-0 pt-20 pb-16 lg:pt-24 gap-5">
         {status === "authenticated" &&
           !loading &&
           blogs?.map((item, index) => (

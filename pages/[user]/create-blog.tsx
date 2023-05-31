@@ -125,12 +125,12 @@ const CreateBlog = () => {
       <Head>
         <title>Create Blog</title>
       </Head>
-      <div className="w-full relative flex flex-col min-h-screen pt-24 gap-5">
+      <div className="w-full relative flex flex-col min-h-screen px-2 lg:px-0 pt-20 pb-16 lg:pt-24 gap-5">
         <div className="bg-white p-5 rounded-xl shadow-md flex flex-col gap-5">
           {!loading && (
             <>
               <div className="grid grid-cols-12 gap-5">
-                <div className="col-span-5 h-52 bg-slate-200 rounded-lg p-2">
+                <div className="col-span-12 lg:col-span-5 h-52 bg-slate-200 rounded-lg p-2">
                   {selectedImage ? (
                     <div className="flex relative w-full h-full rounded-lg overflow-hidden">
                       <Image
@@ -173,9 +173,9 @@ const CreateBlog = () => {
                     </label>
                   )}
                 </div>
-                <div className="col-span-7 flex flex-col justify-between">
+                <div className="col-span-12 lg:col-span-7 gap-6 lg:gap-0 flex flex-col justify-between">
                   <input
-                    className="border-b w-full focus:border-b-slate-700 text-lg font-medium text-slate-700 outline-none"
+                    className="border-b w-fit lg:w-full focus:border-b-slate-700 text-lg font-medium text-slate-700 outline-none"
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}

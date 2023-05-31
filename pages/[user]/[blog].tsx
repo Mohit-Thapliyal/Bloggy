@@ -3,7 +3,6 @@ import { BlogType } from "@/utils/types";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-// import { useRouter } from "next/router";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   AiFillHeart,
@@ -11,30 +10,6 @@ import {
   AiOutlineHeart,
   AiOutlineLoading3Quarters,
 } from "react-icons/ai";
-
-const DummyData = {
-  title: "The Rise of Blockchain Technology: A Beginner's Guide",
-  date: "April 15, 2023",
-  description: [
-    "Blockchain technology is a digital ledger that is used to record transactions and is immutable, secure, and transparent. The blockchain technology first emerged in 2008 with the introduction of Bitcoin, the first decentralized digital currency. Since then, it has evolved to become a versatile technology with numerous applications across various industries.",
-    "One of the significant benefits of blockchain technology is that it enables secure and transparent transactions without the need for intermediaries. This means that it can help reduce costs and improve efficiency in industries such as finance, supply chain management, and real estate.",
-    "Moreover, blockchain technology offers an opportunity to solve some of the pressing problems faced by society, such as identity theft and fraud. With blockchain-based systems, individuals and organizations can maintain their identity and data securely and share it only with authorized parties.",
-    "Despite its numerous advantages, blockchain technology is not without its drawbacks. One of the primary concerns is the energy consumption associated with its operations. Also, there are concerns about scalability and the potential for the concentration of power among a few large entities.",
-    "Overall, blockchain technology is a promising technology that is likely to have a significant impact on various industries in the years to come.",
-  ],
-  likes: [""],
-  likeCount: 22,
-  tag: ["#Blockchain", "#Cryptocurrency", "#Decentralization"],
-  profile:
-    "https://lh3.googleusercontent.com/ogw/AAEL6shNSfYDplMrKLHB_7kT5CJxrm7pXvSLB0uRHu32j8g=s64-c-mo",
-  image:
-    "https://images.unsplash.com/photo-1639815188546-c43c240ff4df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3132&q=80",
-  name: "Mohit Thapliyal",
-};
-
-// interface BlogProp {
-//   url: string;
-// }
 
 const Blog = () => {
   const [liked, setLiked] = useState(false);
@@ -63,7 +38,7 @@ const Blog = () => {
     <Head>
       <title>{`${blog?.title?.slice(0,25).trim()}...`}</title>
     </Head>
-    <div className="w-full relative flex flex-col min-h-screen py-20 gap-5 px-1">
+    <div className="w-full relative flex flex-col min-h-screen px-2 lg:px-0 pt-20 pb-10 lg:pb-16 lg:pt-24 gap-5">
       <div className="flex flex-col gap-5 bg-white p-3 lg:p-5 rounded-xl shadow-md">
         {!loading && blog && (
           <>
