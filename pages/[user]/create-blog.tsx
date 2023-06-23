@@ -84,12 +84,12 @@ const CreateBlog = () => {
       };
     }
 
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL!, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blog`!, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(blogData),
     });
     setLoading(false);
     setTitle("");
