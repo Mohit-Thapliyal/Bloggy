@@ -91,11 +91,12 @@ const Blog = ({
       confirm("Login to like the blog")?router.replace("/auth/signin"):null;
     }
   };
+  console.log(index)
 
   return (
     <div
-      className={`w-full flex flex-col lg:flex-row items-center relative lg:h-56 p-3 lg:p-5 bg-white rounded-xl lg:rounded-3xl shadow-md gap-5 ${
-        index % 2 ? "flex-row-reverse" : ""
+      className={`w-full flex flex-col lg:flex-row items-center relative bg-white lg:h-56 p-3 lg:p-5 bg-whie rounded-xl lg:rounded-3xl shadow-md gap-5 ${
+        index%2 ? "lg:flex-row-reverse":""
       }`}
     >
       <Link
